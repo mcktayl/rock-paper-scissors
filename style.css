@@ -36,7 +36,7 @@ header > h1 {
 
 .badge {
     padding: 2px 10px;
-    background: #E2584D;
+    background: #008080;
     color: white;
     font-family: Asap, sans-serif;
     font-size: 14px;
@@ -82,7 +82,7 @@ header > h1 {
 
 .choice:hover {
     cursor: pointer;
-    background: #E2584D;
+    background: #008080;
 }
 
 #action-message {
