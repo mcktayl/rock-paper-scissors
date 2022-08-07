@@ -8,6 +8,9 @@ const rock_div = document.getElementById('r');
 const paper_div = document.getElementById('p');
 const scissors_div = document.getElementById('s');
 
+const smallUserWord = 'user'.fontsize(3).sub();
+const smallComputerWord = 'computer'.fontsize(3).sub();
+
 function getComputerChoice() {
   const choices = ['r', 'p', 's'];
   const randomNumber = Math.floor(Math.random() * 3);
@@ -21,41 +24,46 @@ function convertToWord(letter) {
 }
 
 function win(userChoice, computerChoice) {
+  const userChoice_div = document.getElementById(userChoice);
   userScore++;
   userScore_span.innerHTML = userScore;
-  computerScore_span.innerHTML = computerScore;
-  const smallUserWord = 'user'.fontsize(3).sub();
-  const smallComputerWord = 'computer'.fontsize(3).sub();
   result_p.innerHTML = `${convertToWord(
     userChoice
   )}${smallUserWord} beats ${convertToWord(
     computerChoice
   )}${smallComputerWord}. You win!`;
+  userChoice_div.classList.add('green-glow');
+  setTimeout(function () {
+    userChoice_div.classList.remove('green-glow');
+  }, 300);
 }
 
 function lose(userChoice, computerChoice) {
+  const userChoice_div = document.getElementById(userChoice);
   computerScore++;
-  userScore_span.innerHTML = userScore;
   computerScore_span.innerHTML = computerScore;
-  const smallUserWord = 'user'.fontsize(3).sub();
-  const smallComputerWord = 'computer'.fontsize(3).sub();
   result_p.innerHTML = `${convertToWord(
     userChoice
   )}${smallUserWord} loses to ${convertToWord(
     computerChoice
   )}${smallComputerWord}. You lost!`;
+  userChoice_div.classList.add('red-glow');
+  setTimeout(function () {
+    userChoice_div.classList.remove('red-glow');
+  }, 300);
 }
 
 function draw(userChoice, computerChoice) {
-  userScore_span.innerHTML = userScore;
-  computerScore_span.innerHTML = computerScore;
-  const smallUserWord = 'user'.fontsize(3).sub();
-  const smallComputerWord = 'computer'.fontsize(3).sub();
+  const userChoice_div = document.getElementById(userChoice);
   result_p.innerHTML = `${convertToWord(
     userChoice
   )}${smallUserWord} ties with ${convertToWord(
     computerChoice
   )}${smallComputerWord}. There is a draw!`;
+  userChoice_div.classList.add('grey-glow');
+  setTimeout(function () {
+    userChoice_div.classList.remove('grey-glow');
+  }, 300);
 }
 
 function game(userChoice) {
